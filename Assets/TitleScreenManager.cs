@@ -5,11 +5,8 @@ using Unity.Netcode;
 
 public class TitleScreenManager : MonoBehaviour
 {
-    public void Test()
-    {
-        console.log("test");
-    }
-    public void StartNetworkAsHostt()
+
+    public void StartNetworkAsHost()
     {
         NetworkManager.Singleton.StartHost();
     }

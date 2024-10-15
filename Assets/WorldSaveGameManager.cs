@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnitEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class WorldSaveGameManager : MonoBehaviour
 {
-    public static WorldSaveGameManager Singleton;
+    public static WorldSaveGameManager instance;
 
     [SerializeField] int worldSceneIndex = 1;
 
