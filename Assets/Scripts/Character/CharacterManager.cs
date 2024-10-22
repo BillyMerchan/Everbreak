@@ -8,4 +8,9 @@ public class CharacterManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
     }
+
+    protected virtual void Update()
+    {
+        
+    }
 }

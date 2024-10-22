@@ -273,6 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539970990cb28fcebbfbffb311c79a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verticalMovement: 0
+  horizontalMovement: 0
+  moveAmount: 0
+  walkingSpeed: 2
+  runningSpeed: 5
 --- !u!114 &203465103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,6 +871,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementInput: {x: 0, y: 0}
+  horizontalInput: 0
+  verticalInput: 0
+  moveAmount: 0
 --- !u!4 &918024634
 Transform:
   m_ObjectHideFlags: 0
@@ -1335,6 +1343,71 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &2121938133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347957269500093088, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341938689250456328, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: m_Name
+      value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971688689131004739, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3604775765
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971688689131004739, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1030728106
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
 --- !u!1001 &1776719207614109318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1509,8 +1582,7 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1030728106
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1666344520893432888, guid: 21e595fde0408f7e78cbe61c7fa573ce, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1591,3 +1663,4 @@ SceneRoots:
   - {fileID: 8669778749826850781}
   - {fileID: 1776719207614109318}
   - {fileID: 918024634}
+  - {fileID: 2121938133}

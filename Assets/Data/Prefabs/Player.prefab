@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 7098302081518341808}
   - component: {fileID: 6556466399013107512}
   - component: {fileID: 8971688689131004739}
-  - component: {fileID: -1666344520893432888}
+  - component: {fileID: -5711160814825222294}
+  - component: {fileID: 5707689599377026202}
+  - component: {fileID: 3492230407937798814}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -128,7 +130,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-1666344520893432888
+--- !u!114 &-5711160814825222294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,6 +139,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 5341938689250456328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e215584dff3e5e06971cdd60b55edde, type: 3}
+  m_Script: {fileID: 11500000, guid: 24c5f9f3109d3aac2b9ec816b500f9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5707689599377026202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341938689250456328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539970990cb28fcebbfbffb311c79a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalMovement: 0
+  horizontalMovement: 0
+  moveAmount: 0
+  walkingSpeed: 2
+  runningSpeed: 5
+--- !u!143 &3492230407937798814
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341938689250456328}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}

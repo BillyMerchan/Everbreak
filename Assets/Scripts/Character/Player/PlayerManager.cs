@@ -12,4 +12,11 @@ public class PlayerManager : CharacterManager
 
         playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
     }
+
+    protected override void Update()
+    {
+        base.Update();
+        // run every fram - handling movement
+        playerLocomotionManager.HandleAllMovement();
+    }
 }
