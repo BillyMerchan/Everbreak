@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class CharacterManager : NetworkBehaviour;
+public class CharacterManager : NetworkBehaviour
 {
     public CharacterController characterController;
 
-    CharacterNetworkManager CharacterNetworkManager;
+    CharacterNetworkManager characterNetworkManager;
 
     protected virtual void Awake()
     {
@@ -20,17 +20,24 @@ public class CharacterManager : NetworkBehaviour;
     protected virtual void Update()
     {
         // If character is being controlled from our side, assign psition to our transform
-        if(isOwner)
+        if(IsOwner)
         {
             characterNetworkManager.networkPosition.Value = transform.position;
+            characterNetworkManager.networkRotation..Value = transform.rotation;
         }
         // If character is being controlled from elsewhere , assign its position locally by the position of it's network transform
         else
         {
+            // Position
             transform.position = Vector3.SmoothDamp(transform.position,
-            characterNetworkManager.networkPosition.Value,
-            ref characterNetworkManager.networkPositionVelocity,
-            characterNetworkManager.networkPositionSmoothTime)
+                characterNetworkManager.networkPosition.Value,
+                ref characterNetworkManager.networkPositionVelocity,
+                characterNetworkManager.networkPositionSmoothTime);
+
+            // Rotation
+            transform.rotation = Quaternion.Slerp(transform.rotation,
+                characterNetworkManager.networkRotation.Value,
+                characterNetworkManager.networkRotationSmoothTime);
         }
     }
 }

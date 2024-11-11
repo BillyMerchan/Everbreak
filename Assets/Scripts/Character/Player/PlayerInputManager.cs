@@ -69,6 +69,22 @@ public class PlayerInputManager : MonoBehaviour
         SceneManager.activeSceneChanged -= OnSceneChange;
     }
 
+    // if we minimize or lower the window, stop adjusting inputs
+    private void OnApplicationFocus(bool focus)
+    {
+        if(enabled)
+        {
+            if(focus)
+            {
+                playerControls.Enable();
+            }
+            else
+            {
+                playerControls.Disable();
+            }
+        }
+    }
+
     private void Update()
     {
         HandleMovementInput();
