@@ -24,11 +24,21 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     public void HandleAllMovement()
     {
         // Grounded movement
+        HandleGroundedMovement();
         // Aerial movement
+    }
+
+    private void GetVerticalAndHorizontalInputs()
+    {
+        verticalMovement = PlayerInputManager.instance.verticalInput;
+        horizontalMovement = PlayerInputManager.instance.horizontalInput;
+
+        // Clamp Movements
     }
 
     private void HandleGroundedMovement()
     {
+        GetVerticalAndHorizontalInputs();
         // Our move direction is based on camera perspective + inputs
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
         moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
@@ -38,10 +48,13 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         if (PlayerInputManager.instance.moveAmount > 0.5f)
         {
             // move at running speed
+            player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
         }
-        else if (PlayerInputManager.instance.moveAmount > 0)
+        else if (PlayerInputManager.instance.moveAmount <= 0.5f)
         {
             // move at walking speed
+            player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+
         }
     }
 }
