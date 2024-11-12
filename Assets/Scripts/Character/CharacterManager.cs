@@ -23,7 +23,7 @@ public class CharacterManager : NetworkBehaviour
         if(IsOwner)
         {
             characterNetworkManager.networkPosition.Value = transform.position;
-            characterNetworkManager.networkRotation..Value = transform.rotation;
+            characterNetworkManager.networkRotation.Value = transform.rotation;
         }
         // If character is being controlled from elsewhere , assign its position locally by the position of it's network transform
         else
