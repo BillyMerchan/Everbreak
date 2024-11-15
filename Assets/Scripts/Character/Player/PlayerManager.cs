@@ -25,4 +25,26 @@ public class PlayerManager : CharacterManager
         // run every frame - handling movement
         playerLocomotionManager.HandleAllMovement();
     }
+
+    protected override void LateUpdate()
+    {
+        if(!IsOwner){
+            return;
+        }
+        base.LateUpdate();
+
+        PlayerCamera.instance.HandleAllCameraActions();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        // If player object is local client
+        if (IsOwner)
+        {
+            PlayerCamera.instance.player = this;
+        }
+    }
+
 }
