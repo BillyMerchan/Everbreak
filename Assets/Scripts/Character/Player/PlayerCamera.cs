@@ -7,6 +7,7 @@ public class PlayerCamera : MonoBehaviour
     public static PlayerCamera instance;
     public Camera cameraObject;
     public PlayerManager player;
+    [SerializeField] Transform cameraPivotTransform;
 
     // Change these to tweak camera performance
     [Header("Camera Settings")]
@@ -69,17 +70,21 @@ public class PlayerCamera : MonoBehaviour
         
         // normal rotations
         // rotate left and right based on horizontal movement of mouse
-        // rotate up and down based on vertical movement of mouse
         leftAndRightLookAngle += (PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed) * Time.deltaTime;
+        // rotate up and down based on vertical movement of mouse
         upAndDownLookAngle -= (PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed) * Time.deltaTime;
         // clamp upAndDownLookAngle
         upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
 
-        Vector3 upAndDownLookAngle = Vector3.zero;
+        Vector3 cameraRotation = Vector3.zero;
+        Quaternion targetRotation;
+
         // Rotate this game object on the y axis (left and right)
         cameraRotation.y = leftAndRightLookAngle;
-        Quaternion targetRotation = Quaternion.Euler(cameraRotation);
+        targetRotation = Quaternion.Euler(cameraRotation);
         transform.rotation = targetRotation;
+
+        // Rotate this pivot gameobject up and down:w
 
         cameraRotation = Vector3.zero;
         cameraRotation.x = upAndDownLookAngle;

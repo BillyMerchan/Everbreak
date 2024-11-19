@@ -95,7 +95,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
-        HandleMovementInput();
+        HandlePlayerMovementInput();
         HandleCameraMovementInput();
     }
 
@@ -119,8 +119,8 @@ public class PlayerInputManager : MonoBehaviour
 
     private void HandleCameraMovementInput()
     {
-        cameraVerticalInput = cameraMovementInput.y;
-        cameraHorizontalInput = cameraMovementInput.x;
+        cameraVerticalInput = cameraInput.y;
+        cameraHorizontalInput = cameraInput.x;
     }
 
     // Controlling character
