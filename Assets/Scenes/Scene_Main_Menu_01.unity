@@ -1177,21 +1177,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8290179789376373184, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
-      propertyPath: cameraPivotTransform
-      value: 
-      objectReference: {fileID: 1206941602477045862}
     - target: {fileID: 2167573978623651561, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
       propertyPath: m_Name
       value: PlayerCamera (Left and Right)
       objectReference: {fileID: 0}
     - target: {fileID: 5047614841043649793, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7219683167623717719, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7812241700612547771, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1238,11 +1230,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
---- !u!4 &1206941602477045862 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5047614841043649793, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
-  m_PrefabInstance: {fileID: 1206941602477045861}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1776719207614109318
 PrefabInstance:
   m_ObjectHideFlags: 0
