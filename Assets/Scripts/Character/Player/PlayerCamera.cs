@@ -101,7 +101,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void HandleCollisions()
     {
-        targetCameraZPosition = cameraZPosition;
+        targetCameraZPosition 4= cameraZPosition;
         RaycastHit hit;
         // direction for collision
         Vector3 direction = cameraObject.transform.position - cameraPivotTransform.position;
