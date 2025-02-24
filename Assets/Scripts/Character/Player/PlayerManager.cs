@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerManager : CharacterManager
 {
-    PlayerLocomotionManager playerLocomotionManager;
+    [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
+    [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
+
     protected override void Awake()
     {
         base.Awake();
         // Player specific functionality
 
         playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
     }
 
     protected override void Update()
@@ -44,6 +47,7 @@ public class PlayerManager : CharacterManager
         if (IsOwner)
         {
             PlayerCamera.instance.player = this;
+            PlayerInputManager.instance.player = this;
         }
     }
 

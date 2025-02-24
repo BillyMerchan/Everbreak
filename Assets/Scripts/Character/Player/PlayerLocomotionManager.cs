@@ -6,10 +6,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 {
     PlayerManager player;
     // Taken from input manager
-    public float verticalMovement;
-    public float horizontalMovement;
-    public float moveAmount;
+    [HideInInspector] public float verticalMovement;
+    [HideInInspector] public float horizontalMovement;
+    [HideInInspector] public float moveAmount;
 
+    [Header("Movement Settings")]
     private Vector3 moveDirection;
     private Vector3 targetRotationDirection;
     [SerializeField] float walkingSpeed = 2;
@@ -77,5 +78,16 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
         Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
         transform.rotation = targetRotation;
+    }
+
+    private void AttemptToPerformDodge()
+    {
+        rollDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
+        rollDirection += PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
+
+        rollDirection.y = 0;
+        rollDirection.Normalize();
+        Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
+        player.transform.rotation = playerRotation;
     }
 }

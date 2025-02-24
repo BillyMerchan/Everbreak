@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInputManager instance;
+    public PlayerManager player;
 
     // Reading input
     PlayerControls playerControls;
@@ -20,6 +21,10 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] Vector2 cameraInput;
     public float cameraVerticalInput;
     public float cameraHorizontalInput;
+
+    [Header("PLAYER ACTION INUT")]
+    [SerializeField] bool dodgeInput = false;
+
 
     private void Awake(){
         if (instance == null){
@@ -65,6 +70,7 @@ public class PlayerInputManager : MonoBehaviour
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
+            playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
 
         }
 
@@ -115,6 +121,11 @@ public class PlayerInputManager : MonoBehaviour
         {
             moveAmount = 1;
         }
+
+        // pass 0 on horizozntal, if not locked on no horizontal strafing
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
+
+        // if locked on pass horizontal as well
     }
 
     private void HandleCameraMovementInput()
@@ -124,4 +135,13 @@ public class PlayerInputManager : MonoBehaviour
     }
 
     // Controlling character
+    private void HandleDodgeInput()
+    {
+        if (dodgeInput)
+        {
+            dodgeInput = false;
+            // Perform dodge
+            
+        }
+    }
 }

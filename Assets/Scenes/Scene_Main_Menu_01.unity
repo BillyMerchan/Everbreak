@@ -1177,6 +1177,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8290179789376373184, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
+      propertyPath: upAndDownRotationSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8290179789376373184, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
+      propertyPath: leftAndRightRotationSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2167573978623651561, guid: 8c5e1f7d60d9747c89939226df2b5e74, type: 3}
       propertyPath: m_Name
       value: PlayerCamera (Left and Right)

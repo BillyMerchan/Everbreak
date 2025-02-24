@@ -5,7 +5,9 @@ using Unity.Netcode;
 
 public class CharacterManager : NetworkBehaviour
 {
-    public CharacterController characterController;
+    [HideInInspector] public CharacterController characterController;
+    [HideInInspector] public Animator animator;
+    
 
     CharacterNetworkManager characterNetworkManager;
 
@@ -15,6 +17,7 @@ public class CharacterManager : NetworkBehaviour
 
         characterController = GetComponent<CharacterController>();
         characterNetworkManager = GetComponent<CharacterNetworkManager>();
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void Update()
