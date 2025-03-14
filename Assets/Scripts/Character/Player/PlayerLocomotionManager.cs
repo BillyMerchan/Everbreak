@@ -82,12 +82,22 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void AttemptToPerformDodge()
     {
-        rollDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
-        rollDirection += PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
+        // if moving when we dodge, perform roll
+        if (moveAmount > 0) 
+        {
+            rollDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
+            rollDirection += PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
+            rollDirection.y = 0;
+            rollDirection.Normalize();
 
-        rollDirection.y = 0;
-        rollDirection.Normalize();
-        Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
-        player.transform.rotation = playerRotation;
+            Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
+            player.transform.rotation = playerRotation;
+
+            // Performing roll animation
+        }
+        // if we are stationary, perform bacsktep
+        else {
+            // performing backstep animation
+        }
     }
 }

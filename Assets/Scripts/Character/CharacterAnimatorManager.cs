@@ -16,4 +16,14 @@ public class CharacterAnimatorManager : MonoBehaviour
         character.animator.SetFloat("Horizontal", horizontalValue);
         character.animator.SetFloat("Vertical", verticalValue);
     }
+
+    public virtual void PlayTargetActionAnimation(string targetAnimation, bool isPerformingAction, bool applyRootMotion = true)
+    {
+        character.animator.applyRootMotion = applyRootMotion;
+        character.animator.CrossFade(targetAnimation, 0.2f);
+        // Can be used to stop character from attempting new action
+        // e.g. if damaged, and performing action
+        // this flag will stop you
+        character.isPerformingAction = isPerformingAction;
+    }
 }
