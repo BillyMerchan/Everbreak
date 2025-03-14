@@ -17,7 +17,12 @@ public class CharacterAnimatorManager : MonoBehaviour
         character.animator.SetFloat("Vertical", verticalValue);
     }
 
-    public virtual void PlayTargetActionAnimation(string targetAnimation, bool isPerformingAction, bool applyRootMotion = true)
+    public virtual void PlayTargetActionAnimation(
+        string targetAnimation,
+        bool isPerformingAction,
+        bool applyRootMotion = true,
+        bool canRotate = false,
+        bool canMove = false)
     {
         character.animator.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation, 0.2f);
@@ -25,5 +30,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         // e.g. if damaged, and performing action
         // this flag will stop you
         character.isPerformingAction = isPerformingAction;
+        character.canRotate = canRotate;
+        character.canMove = canMove;
     }
 }

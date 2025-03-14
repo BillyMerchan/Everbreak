@@ -26,6 +26,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void HandleAllMovement()
     {
+        // if (player.isPerformingAction)
+        // {
+        //     return true;
+        // }
+
         // Grounded movement
         HandleGroundedMovement();
         HandleRotation();
@@ -42,6 +47,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleGroundedMovement()
     {
+        if (!player.canMove)
+        {
+            return;
+        }
         GetVerticalAndHorizontalInputs();
         // Our move direction is based on camera perspective + inputs
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
@@ -64,6 +73,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleRotation()
     {
+        if (!player.canRotate)
+        {
+            return;
+        }
         targetRotationDirection = Vector3.zero;
         targetRotationDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
         targetRotationDirection = targetRotationDirection + PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
@@ -80,7 +93,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         transform.rotation = targetRotation;
     }
 
-    private void AttemptToPerformDodge()
+    public void AttemptToPerformDodge()
     {
         if (player.isPerformingAction)
         {
