@@ -101,9 +101,17 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
+        HandleAllInputs();
+    }
+
+    private void HandleAllInputs()
+    {
         HandlePlayerMovementInput();
         HandleCameraMovementInput();
+        HandleDodgeInput();
     }
+
+    // Handle movement
 
     private void HandlePlayerMovementInput(){
         verticalInput = movementInput.y;
@@ -134,6 +142,8 @@ public class PlayerInputManager : MonoBehaviour
         cameraHorizontalInput = cameraInput.x;
     }
 
+    // Action
+
     // Controlling character
     private void HandleDodgeInput()
     {
@@ -141,7 +151,7 @@ public class PlayerInputManager : MonoBehaviour
         {
             dodgeInput = false;
             // Perform dodge
-            
+            player.playerLocomotionManager.AttemptToPerformDodge();
         }
     }
 }

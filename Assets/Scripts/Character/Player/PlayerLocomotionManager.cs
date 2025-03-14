@@ -82,6 +82,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void AttemptToPerformDodge()
     {
+        if (player.isPerformingAction)
+        {
+            return;
+        }
         // if moving when we dodge, perform roll
         if (moveAmount > 0) 
         {
@@ -92,6 +96,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
             Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
             player.transform.rotation = playerRotation;
+
+            player.PlayerAnimatorManager.PlayTargetActionAnimation("Roll_Forward_01", true, true);
 
             // Performing roll animation
         }
