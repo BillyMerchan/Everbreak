@@ -117,6 +117,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // if we are stationary, perform bacsktep
         else {
             // performing backstep animation
+            player.PlayerAnimatorManager.PlayTargetActionAnimation("Backstep_01", true, true);
         }
     }
 }
