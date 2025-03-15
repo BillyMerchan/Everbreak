@@ -32,5 +32,8 @@ public class CharacterAnimatorManager : MonoBehaviour
         character.isPerformingAction = isPerformingAction;
         character.canRotate = canRotate;
         character.canMove = canMove;
+
+        // Communicate server animations to other client instances
+        character.characterNetworkManager.NotifyTheServerOfActionAnimation(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
     }
 }
