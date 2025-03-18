@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerSoundFXManager : CharacterSoundFXManager
 {
-    private  audioSource;
+    private AudioSource audioSource;
 
     protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
 
-        public void PlayRollSoundFX()
-        {
-            audioSource.PlayOneShot(WorldSoundFXManager.instance.rollSFX);
-        }
+    }
+    public void PlayRollSoundFX()
+    {
+        audioSource.PlayOneShot(WorldSoundFXManager.instance.rollSFX);
     }
 }
