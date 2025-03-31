@@ -125,9 +125,14 @@ public class PlayerInputManager : MonoBehaviour
             moveAmount = 0.5f;
         
         // Clamps to run
-        } else if (moveAmount > 0.5 && moveAmount <= 1)
+        }
+        else if (moveAmount > 0.5 && moveAmount <= 1)
         {
             moveAmount = 1;
+        }
+        if (player == null)
+        {
+            return;
         }
 
         // pass 0 on horizozntal, if not locked on no horizontal strafing

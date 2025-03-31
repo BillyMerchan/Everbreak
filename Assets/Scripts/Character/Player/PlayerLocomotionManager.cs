@@ -24,6 +24,30 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         player = GetComponent<PlayerManager>();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+        if(player.IsOwner)
+        {
+            player.characterNetworkManager.verticalMovement.Value = verticalMovement;
+            player.characterNetworkManager.horizontalMovement.Value = horizontlMovement;
+            player.characterNetworkManager.moveAmount.Value = moveAmount;
+        }
+        else
+        {
+            verticalMovement = player.characterNetworkManager.verticalMovement.value;
+            horizontalMovement = player.characterNetworkManager.horizontalMovement.value;
+            moveAmount = player.characterNetworkManager.moveAmount.Value;
+
+            // if not locked on, just pass moveAmount
+            player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
+
+            // if locked on pass both horizontal and vertical
+        }
+
+    }
+
     public void HandleAllMovement()
     {
         // if (player.isPerformingAction)

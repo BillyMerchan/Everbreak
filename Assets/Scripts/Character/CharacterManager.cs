@@ -8,7 +8,7 @@ public class CharacterManager : NetworkBehaviour
     [HideInInspector] public CharacterController characterController;
     [HideInInspector] public Animator animator;
     
-    CharacterNetworkManager characterNetworkManager;
+    [HideInInspector] public CharacterNetworkManager characterNetworkManager;
 
     [Header("Flags")]
     public bool isPerformingAction = false;
