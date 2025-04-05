@@ -155,6 +155,8 @@ public class PlayerInputManager : MonoBehaviour
         if (dodgeInput)
         {
             dodgeInput = false;
+            // return (do nothing) if menu is open
+
             // Perform dodge
             player.playerLocomotionManager.AttemptToPerformDodge();
         }

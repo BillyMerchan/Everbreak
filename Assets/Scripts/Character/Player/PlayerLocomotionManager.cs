@@ -17,6 +17,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] float runningSpeed = 5;
     [SerializeField] float rotationSpeed = 15;
 
+    [Header("Dodge")]
+    private Vector3 rollDirection;
+
     protected override void Awake()
     {
         base.Awake();
@@ -31,13 +34,13 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         if(player.IsOwner)
         {
             player.characterNetworkManager.verticalMovement.Value = verticalMovement;
-            player.characterNetworkManager.horizontalMovement.Value = horizontlMovement;
+            player.characterNetworkManager.horizontalMovement.Value = horizontalMovement;
             player.characterNetworkManager.moveAmount.Value = moveAmount;
         }
         else
         {
-            verticalMovement = player.characterNetworkManager.verticalMovement.value;
-            horizontalMovement = player.characterNetworkManager.horizontalMovement.value;
+            verticalMovement = player.characterNetworkManager.verticalMovement.Value;
+            horizontalMovement = player.characterNetworkManager.horizontalMovement.Value;
             moveAmount = player.characterNetworkManager.moveAmount.Value;
 
             // if not locked on, just pass moveAmount
@@ -61,10 +64,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // Aerial movement
     }
 
-    private void GetVerticalAndHorizontalInputs()
+    private void GetMovementValues()
     {
         verticalMovement = PlayerInputManager.instance.verticalInput;
         horizontalMovement = PlayerInputManager.instance.horizontalInput;
+        moveAmount = PlayerInputManager.instance.moveAmount;
 
         // Clamp Movements
     }
@@ -75,7 +79,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         {
             return;
         }
-        GetVerticalAndHorizontalInputs();
+        GetMovementValues();
         // Our move direction is based on camera perspective + inputs
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
         moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
@@ -124,7 +128,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             return;
         }
         // if moving when we dodge, perform roll
-        if (moveAmount > 0) 
+        if (PlayerInputManager.instance.moveAmount > 0) 
         {
             rollDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
             rollDirection += PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
@@ -134,14 +138,15 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
             player.transform.rotation = playerRotation;
 
-            player.PlayerAnimatorManager.PlayTargetActionAnimation("Roll_Forward_01", true, true);
-
             // Performing roll animation
+            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward_01", true, true);
+
         }
         // if we are stationary, perform bacsktep
-        else {
+        else 
+        {
             // performing backstep animation
-            player.PlayerAnimatorManager.PlayTargetActionAnimation("Backstep_01", true, true);
+            player.playerAnimatorManager.PlayTargetActionAnimation("Backstep_01", true, true);
         }
     }
 }
