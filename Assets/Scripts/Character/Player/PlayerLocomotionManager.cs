@@ -146,7 +146,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         else 
         {
             // performing backstep animation
-            player.playerAnimatorManager.PlayTargetActionAnimation("Backstep_01", true, true);
+            //player.playerAnimatorManager.PlayTargetActionAnimation("Backstep_01", true, true);
         }
     }
 }
