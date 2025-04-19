@@ -21,30 +21,30 @@ public class CharacterNetworkManager : NetworkBehaviour
 
     protected virtual void Awake()
     {
-
+        character = GetComponent<CharacterManager>();
     }
 
     // ServerRPC's are Client -> Host functions
-    // [ServerRPC]
-    // public void NotifyTheServerOfActionAnimationServerRpc(ulong clientID, string animationID, bool applyRootMotion)
-    // {
-    //     // if character is host/server, then call client RPC
-    //     if (IsServer)
-    //     {
-    //         PlayActionAnimationForAllClientsClientRpc(clientID, animationID, applyRootMotion);
-    //     }
-    // }
+    [ServerRpc]
+    public void NotifyTheServerOfActionAnimationServerRpc(ulong clientID, string animationID, bool applyRootMotion)
+    {
+        // if character is host/server, then call client RPC
+        if (IsServer)
+        {
+            PlayActionAnimationForAllClientsClientRpc(clientID, animationID, applyRootMotion);
+        }
+    }
 
-    // [ClientRPC]
-    // // client rpc is sent to all clients from the server
-    // public void PlayActionAnimationForAllClientsClientRpc(ulong clientID, string animationID, bool applyRootMotion)
-    // {
-    //     // make  asingleton to not run character who sent it (dont play animaton twice)
-    //     if (clientID != NetworkManager.Singleton.LocalClientId)
-    //     {
-    //         PerformActionAnimationFromServer(animationID, applyRootMotion);
-    //     }            
-    // }
+    [ClientRpc]
+    // client rpc is sent to all clients from the server
+    public void PlayActionAnimationForAllClientsClientRpc(ulong clientID, string animationID, bool applyRootMotion)
+    {
+       // make  asingleton to not run character who sent it (dont play animaton twice)
+        if (clientID != NetworkManager.Singleton.LocalClientId)
+        {
+            PerformActionAnimationFromServer(animationID, applyRootMotion);
+        }            
+    }
     private void PerformActionAnimationFromServer(string animationID, bool applyRootMotion)
     {
         character.applyRootMotion = applyRootMotion;
